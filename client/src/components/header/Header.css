@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'VAG World Bold';
+    src: url('../../../public/fonts/vag_world_bold.eot'); /* IE 9 Compatibility Mode */
+    src: url('../../../public/fonts/vag_world_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+    url('../../../public/fonts/vag_world_bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../public/fonts/vag_world_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+    url('../../../public/fonts/vag_world_bold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../../../public/fonts/vag_world_bold.svg#vag_world_bold') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+html{
+    background-color: #dcf0ff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "VAG World";
+}
+.App-header {
+    background-color: #4f79ff;
+    height: 80px;
+    display: flex;
+    min-width: 1200px;
+}
+.Nav{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 25%;
+}
+.Plc{
+    color: aliceblue;
+    background-color: #3350ac;
+    border: none;
+    font-size: 150%;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+.Plc:active{
+    background-color: #4f79ff;
+}
+.Login{
+    color: aliceblue;
+    background-color: #4f79ff;
+    border: none;
+    font-size: 120%;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+.Login:active{
+    background-color: #3350ac;
+}

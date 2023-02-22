@@ -1,0 +1,33 @@
+.App{
+    height: 100%;
+    width: 100%;
+    min-width: 1200px;
+}
+
+.Main {
+    margin:0 25%;
+    background-color: #dcf0ff;
+}
+.Main > h1{
+    text-align: center;
+}
+
+a:link, a:visited{
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+}
+.Srch{
+    color: aliceblue;
+    background-color: #4f79ff;
+    border: none;
+    font-size: 130%;
+    padding: 0 5px;
+    border-radius: 10px;
+    margin: 10% 40%;
+}
+.Srch:active{
+    background-color: #3350ac;
+}

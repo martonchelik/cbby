@@ -1,0 +1,47 @@
+.App{
+    height: 100%;
+    width: 100%;
+    min-width: 1200px;
+}
+.Made{
+    margin: 0 25%;
+}
+.Made > h1{
+    font-family: "VAG World Bold";
+}
+.Search{
+    margin: 0 25%;
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px;
+    width: 50%;
+    height: 300px;
+}
+.Srchtbl{
+    width: 100%;
+    height: 93%;
+    border-collapse: collapse;
+
+}
+td, th{
+    border: 3px solid #b0c6d6;
+}
+.Srchbtn{
+    float: right;
+    color: aliceblue;
+    background-color: #4f79ff;
+    border: none;
+    font-size: 100%;
+    padding: 0 5px;
+    border-radius: 10px;
+}
+
+.Years{
+   width: 70px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
