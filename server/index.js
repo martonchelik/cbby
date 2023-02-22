@@ -15,14 +15,18 @@ app.listen(4000, function () {
 
 
 const cars = [
-    {made: "KIA", model:"RIO", year:"2017", gen:"2",price: "9600", transmission:"FWD",
-        gearbox:"mechanic", milage:"2281337 km", bodytpe:"sedan", enginetpe:"gasoline"},
-    {made: "Hummer", model:"H1", year:"1983", gen:"1",price: "19400", transmission:"AWD",
-        gearbox:"mechanic", milage:"14881337 km", bodytpe:"SUV", enginetpe:"electric"},
-    {made: "Ford", model:"Raptor", year:"2017", gen:"3",price: "41200", transmission:"4WD",
-        gearbox:"automatic", milage:"228777 km", bodytpe:"truck", enginetpe:"diesel"},
-    {made: "Ford", model:"Raptor", year:"2017", gen:"3",price: "41200", transmission:"4WD",
-        gearbox:"automatic", milage:"228777 km", bodytpe:"truck", enginetpe:"diesel"},
-    {made: "Ford", model:"Interceptor", year:"2014", gen:"2",price: "11800", transmission:"RWD",
-        gearbox:"automatic", milage:"239000 km", bodytpe:"sedan", enginetpe:"gasoline"}
+    {made: "KIA", model:"Rio", year:"2017", price: "9600", transmission:"FWD",
+        gearbox:"mechanic", milage:"2281337 km", bodytpe:"Sedan", enginetpe:"Gasoline"},
+    {made: "Hummer", model:"H1", year:"1983",price: "19400", transmission:"AWD",
+        gearbox:"mechanic", milage:"14881337 km", bodytpe:"SUV", enginetpe:"Gasoline"},
+    {made: "Ford", model:"Raptor", year:"2017",price: "41200", transmission:"AWD",
+        gearbox:"automatic", milage:"228777 km", bodytpe:"Truck", enginetpe:"Diesel"},
+    {made: "Ford", model:"Interceptor", year:"2014",price: "11800", transmission:"RWD",
+        gearbox:"automatic", milage:"239000 km", bodytpe:"Sedan", enginetpe:"Gasoline"},
+    {made: "Audi", model: "RS6", year: "2011", price: "32000", transmission: "4WD",
+        gearbox: "automatic", milage: "44000", bodytpe: "Wagon", enginetpe: "Gasoline"},
+    {made: "Toyota", model: "Prius", year: "2007", price: "13000", transmission: "FWD",
+        gearbox: "automatic", milage: "470000", bodytpe: "Hatchback", enginetpe: "Hybrid"},
+    {made: "Audi", model: "E-tron", year: "2021", price: "142000", transmission: "4WD",
+        gearbox: "automatic", milage: "41200", bodytpe: "SUV", enginetpe: "Electric"}
 ]
