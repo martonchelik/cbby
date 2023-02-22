@@ -20,11 +20,6 @@
 .Srchtbl{
     width: 100%;
     height: 93%;
-    border-collapse: collapse;
-
-}
-td, th{
-    border: 3px solid #b0c6d6;
 }
 .Srchbtn{
     float: right;
