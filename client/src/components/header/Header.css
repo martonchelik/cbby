@@ -29,6 +29,12 @@ html{
     align-items: center;
     margin: 0 25%;
 }
+.Nav > a{
+    width: 210px;
+}
+.Nav > a > img{
+    width: 100%;
+}
 .Plc{
     color: aliceblue;
     background-color: #3350ac;
@@ -50,4 +56,17 @@ html{
 }
 .Login:active{
     background-color: #3350ac;
+}
+@media (max-width: 600px) {
+    .App-header{
+
+        min-width: auto;
+    }
+    .Nav{
+        width: 100%;
+        margin: 0;
+    }
+    .Nav > a{
+        width: 125px;
+    }
 }

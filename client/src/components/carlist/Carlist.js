@@ -4,21 +4,14 @@ import index from "@mui/material/darkScrollbar";
 import TextField from '@mui/material/TextField';
 import AutoSelect from "../autocomplete/Autocomplete";
 import ModelSelect from "../modelac/Modelac";
+import Button from "@mui/material/Button";
+const {getCars} = require('../../service/service')
+
 
 
 function Carlist() {
     const [cars, setCars] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:4000/cars', {
-        headers : {
-            'Content-Type': 'application/json',
-                'Accept': 'application/json'
-        }
-    })
-        .then(res => res.json())
-        .then(data => setCars(data))
-    }, []
-    );
+    useEffect(() => {getCars().then((res)=>setCars(res.data))}, []);
     const carsmade=[]
     const carsgb=[]
     const carsbt=[]
@@ -47,38 +40,28 @@ function Carlist() {
     const [gearbox, setGearbox] = useState('');
     return (
         <div className="App">
-
+            <h1>Сar Brands: </h1>
             <div className="Made">
-                <h1>Сar Brands: </h1>
+
                 {Array.from(ucarsmade).map((car,index)=>(<div key={index}>{car}</div>))}
             </div>
             <div className="Search">
-                <table className="Srchtbl">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div><AutoSelect color= "white"data={Array.from(ucarsmade)} fieldname={'Made'} val={setMade}/></div>
+                <div className="Srchtbl">
+                    <div><AutoSelect color= "white"data={Array.from(ucarsmade)} fieldname={'Made'} val={setMade}/></div>
+                    <div><ModelSelect data={cars} fieldname={'Model'} val={setModel} madeval={made} autoComplete="off"/></div>
+                    <div>Years<TextField className='Years' label="From" variant="outlined" type="number" />
+                    <TextField className='Years' label="To" variant="outlined" type="number"/></div>
+                    <div><AutoSelect data={Array.from(ucarsbt)} fieldname='Body type' val={setBodytpe}/></div>
+                    <div><AutoSelect data={Array.from(ucarseng)} fieldname='Engine type' val={setEnginetpe}/></div>
+                    <div><AutoSelect data={Array.from(ucarsgb)} fieldname='Gearbox type'val={setGearbox}/></div>
+                    <div><AutoSelect data={Array.from(ucarstrans)} fieldname='Transmission type' val={setTransmission}/></div>
+                    <div>Price<TextField className='Years' label="From" variant="outlined" type="number" />
+                    <TextField className='Years' label="To" variant="outlined" type="number"/></div>
+                    <div><TextField label="ZIP" variant="outlined"/></div>
+                </div>
 
-                            </td>
-                            <td><div><ModelSelect data={cars} fieldname={'Model'} val={setModel} madeval={made} autoComplete="off"/></div></td>
-                            <td><div>Years<TextField className='Years' label="From" variant="outlined" type="number" />
-                            <TextField className='Years' label="To" variant="outlined" type="number"/></div></td>
-                        </tr>
-                        <tr>
-                            <td><div><AutoSelect data={Array.from(ucarsbt)} fieldname='Body type' val={setBodytpe}/></div></td>
-                            <td><div><AutoSelect data={Array.from(ucarseng)} fieldname='Engine type' val={setEnginetpe}/></div></td>
-                            <td><div><AutoSelect data={Array.from(ucarsgb)} fieldname='Gearbox type'val={setGearbox}/></div></td>
-                        </tr>
-                        <tr>
-                            <td><div><AutoSelect data={Array.from(ucarstrans)} fieldname='Transmission type' val={setTransmission}/></div></td>
-                            <td><div>Price<TextField className='Years' label="From" variant="outlined" type="number" />
-                                <TextField className='Years' label="To" variant="outlined" type="number"/></div></td>
-                            <td><div><TextField label="ZIP" variant="outlined"/></div></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button className="Srchbtn">Search</button>
             </div>
+            <div className="Srchbtn"><Button variant="contained" className="Login" href="/search">Search</Button></div>
         </div>
     );
 }

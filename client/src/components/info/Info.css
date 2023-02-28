@@ -20,14 +20,22 @@ a:hover{
     text-decoration: none;
 }
 .Srch{
-    color: aliceblue;
-    background-color: #4f79ff;
-    border: none;
-    font-size: 130%;
-    padding: 0 5px;
-    border-radius: 10px;
+
     margin: 10% 40%;
 }
 .Srch:active{
     background-color: #3350ac;
+}
+
+@media (max-width: 600px) {
+    .App{
+        min-width: auto;
+    }
+    .Main{
+        margin: 0;
+    }
+    .Srch{
+        margin: 0;
+    }
+
 }
