@@ -20,14 +20,13 @@ html{
     background-color: #4f79ff;
     height: 80px;
     display: flex;
-    min-width: 1200px;
 }
 .Nav{
     width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 25%;
+    margin: auto;
 }
 .Nav > a{
     width: 210px;
@@ -39,7 +38,7 @@ html{
     color: aliceblue;
     background-color: #3350ac;
     border: none;
-    font-size: 150%;
+    font-size: 120%;
     padding: 0 20px;
     border-radius: 10px;
 }
@@ -57,16 +56,32 @@ html{
 .Login:active{
     background-color: #3350ac;
 }
+
+@media (max-width: 1550px){
+    .Nav{
+        width: 80%;
+    }
+}
+@media (max-width: 960px){
+    .Nav{
+        width: 100%;
+    }
+}
+
 @media (max-width: 600px) {
     .App-header{
-
         min-width: auto;
+
     }
     .Nav{
         width: 100%;
-        margin: 0;
+        margin: auto;
     }
-    .Nav > a{
-        width: 125px;
+    .Plc{
+        font-size: 100%;
+    }
+    .Login{
+        font-size: 100%;
+        float: right;
     }
 }

@@ -8,8 +8,8 @@ const Header = () => {
         <div className="App-header">
             <div className="Nav">
                 <a href="/"><img src="images/carbuy.png" alt="logo" /></a>
-                <Button variant="contained" className="Plc" href="/">Place an advertisement</Button>
-                <Button variant="contained" className="Login" href="/">Log In</Button>
+                <a href="/" className="Plca"><button className="Plc" >Place an advertisement</button></a>
+                <a href="/"><button className="Login" >Log In</button></a>
             </div>
         </div>
     );

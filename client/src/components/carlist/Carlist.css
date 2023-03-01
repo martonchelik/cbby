@@ -1,7 +1,6 @@
 .App{
     height: 100%;
     width: 100%;
-    min-width: 1200px;
 }
 .Made{
     margin: 0 25% 20px ;
@@ -15,12 +14,12 @@
     margin: 0 25%;
 }
 .Search{
-    margin: 0 25%;
+    margin: auto;
     background-color: white;
     border-radius: 25px;
     padding: 20px;
     width: 50%;
-
+    align-items: center;
 }
 .Srchtbl{
     width: 100%;
@@ -30,6 +29,14 @@
     grid-gap: 32px;
     grid-auto-flow: dense;
 }
+
+@media (max-width: 985px){
+    .Search{
+        width: 500px;
+        margin: auto;
+    }
+}
+
 @media (max-width: 600px) {
     .Srchtbl {
         display: flex;
@@ -44,8 +51,8 @@
 
     }
     .Search{
-        margin: 0 5%;
-        width: auto;
+        margin: auto;
+        width: 240px;
     }
 
 }
