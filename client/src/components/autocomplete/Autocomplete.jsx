@@ -29,7 +29,7 @@ export default function AutoSelect({data, fieldname, val}) {
                     label= {fieldname}
                     inputProps={{
                         ...params.inputProps,
-                        autoComplete: 'new-password', // disable autocomplete and autofill
+                        autoComplete: 'new-password',
                     }}
                 />
             )}
