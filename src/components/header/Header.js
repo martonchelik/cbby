@@ -2,7 +2,6 @@ import React from 'react';
 import './Header.css';
 import {useDispatch, useSelector} from "react-redux";
 import {logoutServ} from "../../service/auth.service";
-import {logOutAction} from "../../store/reducers/loginReducer";
 
 
 const Header = () => {

@@ -49,7 +49,7 @@ function Carlist() {
         const fetchAllGearboxes = async ()=>{
             try{
                 const res = await axios.get("http://localhost:4000/gearboxes")
-                setGearboxes(res.data)
+                setEnginetypes(res.data)
                 setLoaded(true)
             }catch (err) {
                 console.log(err)
