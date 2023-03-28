@@ -4,7 +4,7 @@ import {logInAction, logOutAction} from "../store/reducers/loginReducer";
 export const loginServ = (username) => {
 
     const redir = () => {
-        window.location.assign('http://localhost:3000/Search')
+        window.history.back()
     }
     return function (dispatch){
 

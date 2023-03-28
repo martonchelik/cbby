@@ -7,19 +7,21 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-app.listen(4000, () => {
-    console.log('bebra')
+app.listen(process.env.PORT || 4000, () => {
+    console.log('Server is running')
 })
 
-const db = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"F4LFermiPascalVideo18",
-    database:"cbby"
+const db = mysql.createPool({
+    host:"eu-cdbr-west-03.cleardb.net",
+    user:"b26e27e26d1df4",
+    password:"e77f53d7",
+    database:"heroku_147c2869609d665"
 })
+
+db.query('select 1 + 1', (err, rows) => { /* */ });
 
 app.get('/', (req,res)=>{
-    res.json("U've got in the bebra")
+    res.json("This is server side")
 })
 
 app.get('/made', (req,res)=>{
