@@ -5,16 +5,19 @@
 
 .App > h1{
     font-family: "VAG World Bold";
-    margin: 0 25%;
 }
 
 .AuthForm{
     display: grid;
     grid-template-columns: repeat(1, minmax(210px, 1fr));
     grid-gap: 32px;
-    width: 20%;
+    max-width: 300px;
     margin: auto;
     margin-top: 10%;
+}
+
+.Inputs{
+    width: auto;
 }
 
 .Valid{

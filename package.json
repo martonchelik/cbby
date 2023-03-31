@@ -1,5 +1,0 @@
-"scripts": {
-  "heroku-prebuild": "cd server && npm install --prefix server && cd .. && cd client && npm install",
-  "heroku-postbuild": "cd server && npm run build --prefix server && cd .. && cd client && ng build --prod"
-  "start": "npm start --prefix server"
-}

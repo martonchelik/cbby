@@ -13,8 +13,8 @@ function App() {
             <Routes>
                 <Route path='/search' element={<Carlist/>}/>
                 <Route path='/' element={<Info/>}/>
-                <Route path='login' element={<Login/>}/>
-                <Route path='registration' element={<Registration/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/registration' element={<Registration/>}/>
             </Routes>
         </BrowserRouter>
     );

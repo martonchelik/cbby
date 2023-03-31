@@ -4,71 +4,18 @@ import TextField from '@mui/material/TextField';
 import AutoSelect from "../autocomplete/Autocomplete";
 import ModelSelect from "../modelac/Modelac";
 import Button from "@mui/material/Button";
-import axios from "axios";
+import {buttons} from "../muithemes/buttons";
+import {ThemeProvider} from "@mui/material";
+import {fetchCars} from "../../service/getcars";
 
 function Carlist() {
+
+
     const [carsmade, setCarsmade] = useState([]);
     const [bodytypes, setBodytypes] = useState([]);
     const [enginetypes, setEnginetypes] = useState([]);
     const [gearboxes, setGearboxes] = useState([]);
-    const [drivetypes,setDrivetypes] = useState([])
-
-    const [loaded, setLoaded] = useState(false);
-    useEffect(()=>{
-        const fetchAllCarbrands = async ()=>{
-            try{
-                const res = await axios.get("http://localhost:4000/made")
-                setCarsmade(res.data)
-                setLoaded(true)
-            }catch (err) {
-                console.log(err)
-            }
-        }
-        fetchAllCarbrands()
-        const fetchAllBodytypes = async ()=>{
-            try{
-                const res = await axios.get("http://localhost:4000/bodytypes")
-                setBodytypes(res.data)
-                setLoaded(true)
-            }catch (err) {
-                console.log(err)
-            }
-        }
-        fetchAllBodytypes()
-        const fetchAllEnginetypes = async ()=>{
-            try{
-                const res = await axios.get("http://localhost:4000/engines")
-                setGearboxes(res.data)
-                setLoaded(true)
-            }catch (err) {
-                console.log(err)
-            }
-        }
-        fetchAllEnginetypes()
-
-        const fetchAllGearboxes = async ()=>{
-            try{
-                const res = await axios.get("http://localhost:4000/gearboxes")
-                setEnginetypes(res.data)
-                setLoaded(true)
-            }catch (err) {
-                console.log(err)
-            }
-        }
-        fetchAllGearboxes()
-
-        const fetchAllTransmissions = async ()=>{
-            try{
-                const res = await axios.get("http://localhost:4000/transmissions")
-                setDrivetypes(res.data)
-                setLoaded(true)
-            }catch (err) {
-                console.log(err)
-            }
-        }
-        fetchAllTransmissions()
-
-    },[loaded])
+    const [drivetypes,setDrivetypes] = useState([]);
 
     const [made, setMade] = useState('');
     const [model, setModel]=useState('');
@@ -76,12 +23,25 @@ function Carlist() {
     const [bodytype, setBodytype] = useState('');
     const [enginetype, setEnginetype] = useState('');
     const [gbtype, setGbtype] = useState('');
+
+
+    useEffect(()=>{
+        fetchCars().then((res)=>setAll(res.data))
+    },[])
+    const setAll = (cars) => {
+        setCarsmade(Object.values(cars.brands))
+        setEnginetypes(Object.values(cars.engines))
+        setGearboxes(Object.values(cars.gears))
+        setDrivetypes(Object.values(cars.trans))
+        setBodytypes(Object.values(cars.bodies))
+    }
+
     const brands = []
     const bodies = []
     const engines = []
     const gbs = []
     const trns = []
-    const models = ["There", "Will", "Be", "Models","Soon"]
+    const models = ["There", "Will", "Be", "Models","Soon"];
 
     carsmade.map((mademap)=>{
         brands.push(mademap.carbrand)
@@ -104,7 +64,7 @@ function Carlist() {
         <div className="App">
             <h1>Сar Brands: </h1>
             <div className="Made">
-                {carsmade.map((cmade)=>(<div key={cmade.idcb}>{cmade.carbrand}</div>))}
+                {carsmade.map((cmade)=>(<div className="Mades" key={cmade.idcb}>{cmade.carbrand}</div>))}
             </div>
             <div className="Search">
                 <div className="Srchtbl">
@@ -122,7 +82,7 @@ function Carlist() {
                 </div>
 
             </div>
-            <div className="Srchbtn"><Button variant="contained" className="Login" href="/search">Search</Button></div>
+            <div className="Srchbtn"><ThemeProvider theme={buttons}><Button variant="contained" className="Login">Search</Button></ThemeProvider></div>
         </div>
     );
 }

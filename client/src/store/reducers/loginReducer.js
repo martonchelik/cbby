@@ -1,3 +1,5 @@
+import {logIn, logOut} from "../actions";
+
 const user = JSON.parse(localStorage.getItem("user"));
 
 const defaultState = user
@@ -6,13 +8,13 @@ const defaultState = user
 
 export const loginReducer = (state = defaultState, action) =>{
     switch (action.type) {
-        case "logIn":
+        case logIn:
             return {
                 ...state,
                 user : action.payload,
                 isLoggedIn: true
             }
-        case "logOut":
+        case logOut:
             return {
                 ...state,
                 user: null,
@@ -25,5 +27,5 @@ export const loginReducer = (state = defaultState, action) =>{
     }
 }
 
-export const logInAction = (payload) => ({type:"logIn", payload})
-export const logOutAction = () => ({type:"logOut"})
+export const logInAction = (payload) => ({type:logIn, payload})
+export const logOutAction = () => ({type:logOut})

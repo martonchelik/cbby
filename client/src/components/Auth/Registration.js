@@ -5,10 +5,23 @@ import {useState} from "react";
 import Icon from 'react-icons-kit';
 import {arrows_circle_check} from 'react-icons-kit/linea/arrows_circle_check'
 import {arrows_exclamation} from 'react-icons-kit/linea/arrows_exclamation'
+import {useSelector} from "react-redux";
+import {buttons} from "../muithemes/buttons";
+import {ThemeProvider} from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import FormHelperText from "@mui/material/FormHelperText";
 
 export default function Registration() {
-
-
+    const isLoggedIn = useSelector(state => state.isLoggedIn)
+    if (isLoggedIn){
+        window.location.href = "/search";
+    }
 
     const [lowerValidated, setLowerValidated]=useState(false);
     const [upperValidated, setUpperValidated]=useState(false);
@@ -17,8 +30,14 @@ export default function Registration() {
     const [lengthValidated, setLengthValidated]=useState(false);
     const [password, setPassword]=useState('``');
     const [confirm, setConfirm]=useState('``');
-    const [valid,setValid]=useState(false);
-    const [disBut,setDisBut]=useState(true);
+
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
 
     const handleChange = (value) => {
         setPassword(value)
@@ -27,52 +46,39 @@ export default function Registration() {
         const number = new RegExp('(?=.*[0-9])');
         const special = new RegExp('(?=.*[!@#\$%\^&\*])');
         const length = new RegExp('(?=.{8,})')
-        if(lower.test(value)){
-            setLowerValidated(true);
-        }
-        else{
-            setLowerValidated(false);
-        }
-        if(upper.test(value)){
-            setUpperValidated(true);
-        }
-        else{
-            setUpperValidated(false);
-        }
-        if(number.test(value)){
-            setNumberValidated(true);
-        }
-        else{
-            setNumberValidated(false);
-        }
-        if(special.test(value)){
-            setSpecialValidated(true);
-        }
-        else{
-            setSpecialValidated(false);
-        }
-        if(length.test(value)){
-            setLengthValidated(true);
-        }
-        else{
-            setLengthValidated(false);
-        }
-
+        setLowerValidated(lower.test(value))
+        setUpperValidated(upper.test(value))
+        setNumberValidated(number.test(value))
+        setSpecialValidated(special.test(value))
+        setLengthValidated(length.test(value))
     }
-
-
 
     return (
         <div className="App">
             <div className="AuthForm">
-                <TextField label="Email address" variant="outlined" />
-                <TextField label="Login" variant="outlined" />
-                <TextField
-                    label="Password"
-                    variant="outlined"
-                    type="password"
-                    onChange={event => handleChange(event.target.value)}
-                />
+                <TextField className="Inputs" label="Email address" variant="outlined" />
+                <TextField className="Inputs" label="Login" variant="outlined" />
+                <FormControl className="Inputs" variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-password"
+                        type={showPassword ? 'text' : 'password'}
+                        onChange={event => handleChange(event.target.value)}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                        label="Password"
+                    />
+                </FormControl>
                 <div className='Valid'>
                     <div className={lowerValidated?'validated':'not-validated'} style={{color:lowerValidated?'green':'red'}}>
                         {lowerValidated?(
@@ -135,15 +141,35 @@ export default function Registration() {
                         At least 8 characters
                     </div>
                 </div>
-                <TextField
-                    label="Confirm password"
-                    variant="outlined"
-                    type="password"
-                    onChange={event => setConfirm(event.target.value)}
-                    error={password !== confirm}
-                    helperText={password !== confirm ? "Password does not match":""}
-                />
-                <Button variant="contained" href="/search">Create account</Button>
+                <FormControl className="Inputs" variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-password"
+                        type={showPassword ? 'text' : 'password'}
+                        onChange={event => setConfirm(event.target.value)}
+                        error={password !== confirm}
+                        helperText={password !== confirm ? "Password does not match":""}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                        label="Confirm password"
+                    />
+                    {password !== confirm && (
+                        <FormHelperText error>
+                            Password does not match
+                        </FormHelperText>
+                    )}
+                </FormControl>
+                <ThemeProvider theme={buttons}><Button variant="contained">Create account</Button></ThemeProvider>
             </div>
         </div>
     );
