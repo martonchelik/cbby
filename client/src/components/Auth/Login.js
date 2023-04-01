@@ -15,18 +15,17 @@ import IconButton from "@mui/material/IconButton";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import FormControl from "@mui/material/FormControl";
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
     const dispatch = useDispatch()
-    const logIn = (nick) =>{
+    const logIn = (nick) => {
         dispatch(loginServ(nick))
     }
     const isLoggedIn = useSelector(state => state.isLoggedIn)
-    if (isLoggedIn){
-        window.location.href = "/search";
-    }
 
-    const [nickname,setNickname] = useState('');
+
+    const [nickname, setNickname] = useState('');
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -36,34 +35,40 @@ export default function Login() {
         event.preventDefault();
     };
 
-    return (
-        <div className="App">
-            <div className="AuthForm">
-                <TextField className="Inputs" id="outlined-basic" label="Login" variant="outlined" onChange={event => setNickname(event.target.value)} />
-                <FormControl className="Inputs" variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={showPassword ? 'text' : 'password'}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                            >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
-                    }
-                    label="Password"
-                />
-            </FormControl>
-                <ThemeProvider theme={buttons}><Button variant="contained"  onClick={() => logIn(nickname)}>Log In</Button></ThemeProvider>
-                <p>Don't have an account? <a href="/registration">Create.</a></p>
+    if (isLoggedIn) {
+        return <Navigate to="/search"/>
+    } else {
+        return (
+            <div className="App">
+                <div className="AuthForm">
+                    <TextField className="Inputs" id="outlined-basic" label="Login" variant="outlined"
+                               onChange={event => setNickname(event.target.value)}/>
+                    <FormControl className="Inputs" variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-password"
+                            type={showPassword ? 'text' : 'password'}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            label="Password"
+                        />
+                    </FormControl>
+                    <ThemeProvider theme={buttons}><Button variant="contained" onClick={() => logIn(nickname)}>Log
+                        In</Button></ThemeProvider>
+                    <p>Don't have an account? <a href="/registration">Create.</a></p>
+                </div>
             </div>
-        </div>
-    );
+        );
 
+    }
 }

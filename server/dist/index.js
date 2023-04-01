@@ -15,8 +15,8 @@ app.listen(process.env.PORT || 4000, () => {
 app.get('/', (req, res) => {
     res.json("This is server side");
 });
-//Service.getmade(app);
-//Service.getengines(app);
-//Service.getgearboxes(app);
-//Service.gettransmissions(app);
-(0, getcars_1.Service)(app);
+(0, getcars_1.GetAllAsync)(app);
+getcars_1.gets.made(app);
+getcars_1.gets.engines(app);
+getcars_1.gets.gearboxes(app);
+getcars_1.gets.transmissions(app);

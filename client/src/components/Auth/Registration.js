@@ -16,20 +16,20 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import FormHelperText from "@mui/material/FormHelperText";
+import {useNavigate, Navigate} from "react-router-dom";
 
 export default function Registration() {
+    let navigate = useNavigate()
     const isLoggedIn = useSelector(state => state.isLoggedIn)
-    if (isLoggedIn){
-        window.location.href = "/search";
-    }
 
-    const [lowerValidated, setLowerValidated]=useState(false);
-    const [upperValidated, setUpperValidated]=useState(false);
-    const [numberValidated, setNumberValidated]=useState(false);
-    const [specialValidated, setSpecialValidated]=useState(false);
-    const [lengthValidated, setLengthValidated]=useState(false);
-    const [password, setPassword]=useState('``');
-    const [confirm, setConfirm]=useState('``');
+
+    const [lowerValidated, setLowerValidated] = useState(false);
+    const [upperValidated, setUpperValidated] = useState(false);
+    const [numberValidated, setNumberValidated] = useState(false);
+    const [specialValidated, setSpecialValidated] = useState(false);
+    const [lengthValidated, setLengthValidated] = useState(false);
+    const [password, setPassword] = useState('``');
+    const [confirm, setConfirm] = useState('``');
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -53,124 +53,133 @@ export default function Registration() {
         setLengthValidated(length.test(value))
     }
 
-    return (
-        <div className="App">
-            <div className="AuthForm">
-                <TextField className="Inputs" label="Email address" variant="outlined" />
-                <TextField className="Inputs" label="Login" variant="outlined" />
-                <FormControl className="Inputs" variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                    <OutlinedInput
-                        id="outlined-adornment-password"
-                        type={showPassword ? 'text' : 'password'}
-                        onChange={event => handleChange(event.target.value)}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    edge="end"
-                                >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                        label="Password"
-                    />
-                </FormControl>
-                <div className='Valid'>
-                    <div className={lowerValidated?'validated':'not-validated'} style={{color:lowerValidated?'green':'red'}}>
-                        {lowerValidated?(
-                            <span className='list-icon green'>
+    if (isLoggedIn) {
+        return <Navigate to="/search"/>
+    } else {
+        return (
+            <div className="App">
+                <div className="AuthForm">
+                    <TextField className="Inputs" label="Email address" variant="outlined"/>
+                    <TextField className="Inputs" label="Login" variant="outlined"/>
+                    <FormControl className="Inputs" variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-password"
+                            type={showPassword ? 'text' : 'password'}
+                            onChange={event => handleChange(event.target.value)}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            label="Password"
+                        />
+                    </FormControl>
+                    <div className='Valid'>
+                        <div className={lowerValidated ? 'validated' : 'not-validated'}
+                             style={{color: lowerValidated ? 'green' : 'red'}}>
+                            {lowerValidated ? (
+                                <span className='list-icon green'>
                                 <Icon icon={arrows_circle_check}/>
                             </span>
-                        ):(
-                            <span className='list-icon'>
+                            ) : (
+                                <span className='list-icon'>
                                 <Icon icon={arrows_exclamation}/>
                             </span>
-                        )}
-                        At least one lowercase letter
-                    </div>
-                    <div className={upperValidated?'validated':'not-validated'} style={{color:upperValidated?'green':'red'}}>
-                        {upperValidated?(
-                            <span className='list-icon green'>
+                            )}
+                            At least one lowercase letter
+                        </div>
+                        <div className={upperValidated ? 'validated' : 'not-validated'}
+                             style={{color: upperValidated ? 'green' : 'red'}}>
+                            {upperValidated ? (
+                                <span className='list-icon green'>
                                 <Icon icon={arrows_circle_check}/>
                             </span>
-                        ):(
-                            <span className='list-icon'>
+                            ) : (
+                                <span className='list-icon'>
                                 <Icon icon={arrows_exclamation}/>
                             </span>
-                        )}
-                        At least one uppercase letter
-                    </div>
-                    <div className={numberValidated?'validated':'not-validated'} style={{color:numberValidated?'green':'red'}}>
-                        {numberValidated?(
-                            <span className='list-icon green'>
+                            )}
+                            At least one uppercase letter
+                        </div>
+                        <div className={numberValidated ? 'validated' : 'not-validated'}
+                             style={{color: numberValidated ? 'green' : 'red'}}>
+                            {numberValidated ? (
+                                <span className='list-icon green'>
                                 <Icon icon={arrows_circle_check}/>
                             </span>
-                        ):(
-                            <span className='list-icon'>
+                            ) : (
+                                <span className='list-icon'>
                                 <Icon icon={arrows_exclamation}/>
                             </span>
-                        )}
-                        At least one number
-                    </div>
-                    <div className={specialValidated?'validated':'not-validated'} style={{color:specialValidated?'green':'red'}}>
-                        {specialValidated?(
-                            <span className='list-icon green'>
+                            )}
+                            At least one number
+                        </div>
+                        <div className={specialValidated ? 'validated' : 'not-validated'}
+                             style={{color: specialValidated ? 'green' : 'red'}}>
+                            {specialValidated ? (
+                                <span className='list-icon green'>
                                 <Icon icon={arrows_circle_check}/>
                             </span>
-                        ):(
-                            <span className='list-icon'>
+                            ) : (
+                                <span className='list-icon'>
                                 <Icon icon={arrows_exclamation}/>
                             </span>
-                        )}
-                        At least one special character
-                    </div>
-                    <div className={lengthValidated?'validated':'not-validated'} style={{color:lengthValidated?'green':'red'}}>
-                        {lengthValidated?(
-                            <span className='list-icon green'>
+                            )}
+                            At least one special character
+                        </div>
+                        <div className={lengthValidated ? 'validated' : 'not-validated'}
+                             style={{color: lengthValidated ? 'green' : 'red'}}>
+                            {lengthValidated ? (
+                                <span className='list-icon green'>
                                 <Icon icon={arrows_circle_check}/>
                             </span>
-                        ):(
-                            <span className='list-icon'>
+                            ) : (
+                                <span className='list-icon'>
                                 <Icon icon={arrows_exclamation}/>
                             </span>
-                        )}
-                        At least 8 characters
+                            )}
+                            At least 8 characters
+                        </div>
                     </div>
+                    <FormControl className="Inputs" variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-password"
+                            type={showPassword ? 'text' : 'password'}
+                            onChange={event => setConfirm(event.target.value)}
+                            error={password !== confirm}
+                            helperText={password !== confirm ? "Password does not match" : ""}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            label="Confirm password"
+                        />
+                        {password !== confirm && (
+                            <FormHelperText error>
+                                Password does not match
+                            </FormHelperText>
+                        )}
+                    </FormControl>
+                    <ThemeProvider theme={buttons}><Button variant="contained">Create account</Button></ThemeProvider>
                 </div>
-                <FormControl className="Inputs" variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                    <OutlinedInput
-                        id="outlined-adornment-password"
-                        type={showPassword ? 'text' : 'password'}
-                        onChange={event => setConfirm(event.target.value)}
-                        error={password !== confirm}
-                        helperText={password !== confirm ? "Password does not match":""}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    edge="end"
-                                >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                        label="Confirm password"
-                    />
-                    {password !== confirm && (
-                        <FormHelperText error>
-                            Password does not match
-                        </FormHelperText>
-                    )}
-                </FormControl>
-                <ThemeProvider theme={buttons}><Button variant="contained">Create account</Button></ThemeProvider>
             </div>
-        </div>
-    );
+        );
+    }
 }
