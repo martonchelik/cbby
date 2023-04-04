@@ -1,6 +1,6 @@
 import cors from 'cors'
 import express, {Express} from 'express';
-import {gets, GetAllAsync} from './service/getcars'
+import {car} from './service/getcars'
 
 const app: Express = express();
 
@@ -16,11 +16,12 @@ app.get('/', (req,res)=>{
     res.json("This is server side")
 })
 
-GetAllAsync(app);
-gets.made(app);
-gets.engines(app);
-gets.gearboxes(app);
-gets.transmissions(app);
+car.getAll(app);
+car.getMade(app);
+car.getBodies(app);
+car.getEngines(app);
+car.getGearboxes(app);
+car.getTransmissions(app);
 
 
 
