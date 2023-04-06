@@ -42,6 +42,11 @@ html{
     padding: 0 20px;
     border-radius: 10px;
 }
+
+.Plc:hover{
+    background-color: #4e6bca;
+}
+
 .Plc:active{
     background-color: #4f79ff;
 }
@@ -52,6 +57,10 @@ html{
     font-size: 120%;
     padding: 0 20px;
     border-radius: 10px;
+}
+
+.Login:hover{
+    background-color: #668aff;
 }
 .Login:active{
     background-color: #3350ac;

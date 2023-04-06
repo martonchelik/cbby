@@ -1,8 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./Info.css";
 import Button from "@mui/material/Button";
+import {buttons} from "../muithemes/buttons";
+import {ThemeProvider} from "@mui/material";
 
 function Info(){
+    const redir = () => {
+        window.location.href = "/search";
+    }
+
     return(
         <div className="App">
             <div className="Main"><h1>About Us:</h1>Carbuy is service of car advertisement. Our vision is to provide a smooth
@@ -16,7 +22,7 @@ function Info(){
                     <li>Sell in a snap by listing your car straight from your mobile</li>
                     <li>Over 200,000 new and used cars to choose from on <a href="/search">Carbuy</a></li>
                 </ul>
-                <div className="Srch"><Button variant="contained" className="Login" href="/search">Search cars on CARBUY</Button></div>
+                <div className="Srch"><ThemeProvider theme={buttons}><Button variant="contained" onClick={() => redir()}>Search cars on CARBUY</Button></ThemeProvider></div>
             </div>
         </div>
     );
