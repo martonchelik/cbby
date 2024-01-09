@@ -1,0 +1,28 @@
+.App{
+    height: 100%;
+    width: 100%;
+}
+
+.App > h1{
+    font-family: "VAG World Bold";
+    margin: 0 25%;
+}
+
+.AuthForm{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(210px, 1fr));
+    grid-gap: 32px;
+    width: 20%;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.Valid{
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.list-icon{
+    margin-right: 12px;
+}

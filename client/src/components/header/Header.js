@@ -1,15 +1,22 @@
 import React from 'react';
 import './Header.css';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import {useDispatch, useSelector} from "react-redux";
+import {logoutServ} from "../../service/auth.service";
+import {logOutAction} from "../../store/reducers/loginReducer";
+
 
 const Header = () => {
+    const nickname = useSelector(state => state.user)
+    const isLoggedIn = useSelector(state => state.isLoggedIn)
+    const dispatch = useDispatch()
     return (
         <div className="App-header">
             <div className="Nav">
                 <a href="/"><img src="images/carbuy.png" alt="logo" /></a>
                 <a href="/" className="Plca"><button className="Plc" >Place an advertisement</button></a>
-                <a href="/"><button className="Login" >Log In</button></a>
+                {isLoggedIn ?
+                    <button className="Login" id="Log" onClick={() => dispatch(logoutServ())}>Hello, {nickname}! Log Out?</button>
+                    :<a href="/Login"><button className="Login" id="Log">Log In</button></a>}
             </div>
         </div>
     );

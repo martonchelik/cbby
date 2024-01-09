@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./Info.css";
 import Button from "@mui/material/Button";
 
@@ -16,7 +16,7 @@ function Info(){
                     <li>Sell in a snap by listing your car straight from your mobile</li>
                     <li>Over 200,000 new and used cars to choose from on <a href="/search">Carbuy</a></li>
                 </ul>
-                <div className="Srch"><Button variant="contained" className="Login" href="/search">Search cars on CARBUY</Button></div>
+                <div className="Srch"><Button variant="contained" href="/search">Search cars on CARBUY</Button></div>
             </div>
         </div>
     );
