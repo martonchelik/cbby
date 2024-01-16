@@ -3,23 +3,20 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function ModelSelect({data, fieldname, val, madeval}) {
-    const modelname= [];
-    data.map(car=>{
-        if (madeval === car.made) {modelname.push(car.model)}
-    })
-    const umodelname =  new Set(modelname)
+
+export default function ModelSelect({data, fieldname, val, setVal, madeval}) {
     return (
         <Autocomplete
-            id="made-select"
+            id="model-select"
             sx={{ width: 200 }}
-            options={Array.from(umodelname)}
+            value={madeval ? val : null}
+            options={data}
             autoHighlight
             disabled={madeval ? false:true}
-
+            isOptionEqualToValue={(option, value) => option.value === value.value || option.value === ''}
             onChange = {
                 (event, newValue) => {
-                    val(newValue);
+                    setVal(newValue);
                 }
             }
             getOptionLabel={(option) => option}
@@ -38,6 +35,7 @@ export default function ModelSelect({data, fieldname, val, madeval}) {
                         ...params.inputProps,
                         autoComplete: 'new-password', // disable autocomplete and autofill
                     }}
+
                 />
             )}
         />

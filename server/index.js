@@ -61,3 +61,99 @@ app.get('/transmissions', (req,res)=>{
         return res.json(data)
     })
 })
+
+app.get('/models/bmw', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 1"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/audi', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 2"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/ford', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 3"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/mercedes', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 4"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/volvo', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 5"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/porsche', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 6"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/mini', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 7"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/hummer', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 8"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/bentley', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 9"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/ferrari', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 10"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models/vw', (req,res)=>{
+    const model = "SELECT model FROM models WHERE modelbrand = 11"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get('/models', (req,res)=>{
+    const model = "SELECT model FROM models"
+    db.query(model,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)+"";
+    })
+})

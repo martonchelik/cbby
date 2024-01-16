@@ -34,6 +34,13 @@
     .Search{
         width: 500px;
         margin: auto;
+        margin-top: 20px;
+    }
+    .Made{
+        display: none;
+    }
+    .CBH{
+        display: none;
     }
 }
 
@@ -41,19 +48,19 @@
     .Srchtbl {
         display: flex;
         flex-direction: column;
+        row-gap: 10px;
+        align-items: center;
     }
     .App{
         min-width: auto;
         width: auto;
     }
-    .Made{
-        margin: 0 5%;
-
-    }
     .Search{
         margin: auto;
-        width: 240px;
+        margin-top: 10px;
+        width: 300px;
     }
+
 
 }
 
